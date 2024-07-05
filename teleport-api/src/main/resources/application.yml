@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: teleport-api
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: -1
+      max-request-size: -1
+
+server:
+  servlet:
+    context-path: /teleport
+  max-http-header-size: 512KB
+  port: 9999
+
+download-path: D:\teleport-file\download
+upload-path: D:\teleport-file\upload
+
+
