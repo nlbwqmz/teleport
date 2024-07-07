@@ -12,13 +12,14 @@ import cn.hutool.http.Header;
 import com.teleport.config.R;
 import com.teleport.entity.FileInfo;
 import com.teleport.entity.RequestDTO;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import java.awt.datatransfer.DataFlavor;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -64,7 +65,7 @@ public class TeleportController {
         try(BufferedInputStream inputStream = new BufferedInputStream(Files.newInputStream(new File(this.downloadPath, fileName).toPath()));
             ServletOutputStream servletOutputStream = response.getOutputStream()) {
             response.setContentType("application/octet-stream");
-            response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
+            response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8));
             response.addHeader(Header.CONTENT_LENGTH.getValue(), String.valueOf(FileUtil.size(new File(this.downloadPath, fileName))));
             IoUtil.copy(inputStream, servletOutputStream);
         } catch (Exception e) {
