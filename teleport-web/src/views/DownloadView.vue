@@ -1,8 +1,9 @@
 <template>
   <AContainer align="left">
-    <van-cell-group>
+    <van-cell-group v-if="list && list.length > 0">
       <van-cell :title="item.fileName" :value="item.size" v-for="(item, index) in list" :key="index" @click="download(item)"/>
     </van-cell-group>
+    <van-empty image="search" description="暂无可下载文件" v-else/>
   </AContainer>
 </template>
 
