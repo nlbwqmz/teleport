@@ -13,7 +13,10 @@
     <version>0.0.1</version>
     <name>teleport-api</name>
     <description>teleport-api</description>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

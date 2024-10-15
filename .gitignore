@@ -34,3 +34,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/teleport-api/src/main/resources/static/web/
